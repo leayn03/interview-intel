@@ -355,5 +355,5 @@ python scripts/analytics_generator.py dashboard --output dashboard.html
 ---
 
 **创建日期**: 2026-01-21
-**版本**: 3.0.0 - 新增简历管理、面试追踪、统计分析功能 ⭐⭐⭐
+**版本**: v1.0.0 - 首个公开版本，完整功能集 + 事实验证协议 ⭐⭐⭐
 **最后更新**: 2026-02-06 - 添加用户配置体系和 MIT License
