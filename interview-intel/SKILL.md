@@ -122,12 +122,16 @@ Claude Code 会自动完成以下工作:
 
 **第3步: 输出完整文件**
 
-生成 5 个 100% 完成的文件,保存在 `companies/[公司名]/` 目录:
+生成 5 个 100% 完成的文件,保存在 `companies/[公司名]-[职位]-[候选人名字]/` 目录:
 - ✅ `01_company_intel_brief.md`
 - ✅ `02_resume_jd_matching.md`
 - ✅ `03_interview_prep_report.md`
 - ✅ `04_icebreaker_messages.md`
 - ✅ `05_final_analysis_report.md`
+
+**命名规范**：`companies/贝壳-MR产品经理-李承润/`
+- 支持同一公司多个岗位：`贝壳-MR产品经理-张三/` 和 `贝壳-AI算法工程师-李四/`
+- 支持多人面试同一岗位：`贝壳-MR产品经理-张三/` 和 `贝壳-MR产品经理-李四/`
 
 #### 提示词模板:
 
@@ -367,7 +371,7 @@ def read_resume(pdf_path):
 ```
 InterviewIntel/
 ├── companies/               # 面试准备包输出目录
-│   └── [公司名]/
+│   └── [公司名]-[职位]-[候选人名字]/
 │       ├── 01_company_intel_brief.md
 │       ├── 02_resume_jd_matching.md
 │       ├── 03_interview_prep_report.md
@@ -379,6 +383,12 @@ InterviewIntel/
 └── interview-intel/
     └── SKILL.md             # 本文档
 ```
+
+**命名示例**：
+- `companies/贝壳-MR产品经理-李承润/`
+- `companies/阿里云-AI产品经理-王蕾/`
+- 支持同一公司多个岗位：`贝壳-MR产品经理-张三/` 和 `贝壳-AI算法工程师-李四/`
+- 支持多人面试同一岗位：`贝壳-MR产品经理-张三/` 和 `贝壳-MR产品经理-李四/`
 
 ---
 
@@ -614,5 +624,6 @@ MIT License
 - 🎉 完善一键完成方案,更流畅的用户体验
 - 📝 更新命令文档,提供更多使用示例
 - ✅ 优化错误处理和提示信息
+- 📁 支持灵活的文件夹命名：`公司名-职位-候选人名字`
 
-**参考示例**: `companies/MiniMax/` - 使用一键完成方案生成的完整示例
+**参考示例**: `companies/阿里云-AI产品经理-王蕾/` - 使用一键完成方案生成的完整示例
