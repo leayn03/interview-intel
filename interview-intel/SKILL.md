@@ -1,603 +1,618 @@
+# Interview Intel - v1.0.0
+
+## 技能描述
+
+综合求职策略系统,为候选人提供从公司调研到面试准备的完整解决方案。**v1.0.0 首个公开版本**: 完整功能集 + 事实验证协议，确保生成内容100%基于真实简历。
+
+**适用场景**:
+- 分析公司背景和业务信息
+- 匹配简历与 JD 要求
+- 生成面试准备策略和话术
+- 创建破冰开场白
+- 输出完整分析报告和行动计划
+
 ---
-name: interview-intel
-description: Comprehensive job application strategy system with one-click workflow combining resume optimization, interview preparation, and recruitment game theory. Use when the user needs to (1) Generate complete interview preparation package with a single command (JD analysis + resume matching + interview strategy + icebreaker messages), (2) Analyze and match resume to JD with STAR-based suggestions, (3) Generate interview attack-defense strategies for HR/Business/Executive rounds, (4) Create compelling icebreaker messages for platforms like Boss直聘, (5) Track interviews and maintain application records. Features all_in_one.py script for instant setup. Organizes all materials by company in a structured folder hierarchy under companies/ directory.
+
+## 🎯 核心能力
+
+### 1. 标准化输出结构
+
+每个公司/职位自动生成 **5 个标准文件**:
+
+#### 文件 1: 公司背景业务信息 (`01_company_intel_brief.md`)
+- **核心信息速览**: 关键数据一页纸
+- **公司背景**: 发展历程、融资上市、行业地位
+- **业务模式**: B+C双轮驱动、收入结构、核心产品
+- **竞争格局**: 主要竞争对手、差异化优势
+- **职位深度分析**: 职位描述解读、要求匹配、面试切入点
+- **核心洞察与策略**: 公司诉求、风险应对
+
+#### 文件 2: 简历分析和匹配 (`02_resume_jd_matching.md`)
+- **匹配度总览**: 综合评分、核心优势、待提升点
+- **逐项匹配分析**: 每个JD要求的详细匹配分析
+- **加分项匹配**: 所有加分项的匹配情况
+- **待提升点应对**: 针对每个短板的应对策略和话术
+- **核心竞争力总结**: 面试中需要突出的核心能力
+
+#### 文件 3: 面试准备报告 (`03_interview_prep_report.md`)
+- **HR面试**: 自我介绍、离职原因、职业规划、薪资策略
+- **业务面试**: CodeLink项目详解、RAG技术理解、优化经验
+- **高管面试**: 行业洞察、优劣势分析、3-6个月规划
+- **技术面试**(可选): 模型评估、RAG vs Fine-tuning
+- **面试准备清单**: 完整的准备时间表
+
+#### 文件 4: 破冰文案 (`04_icebreaker_messages.md`)
+- **通用开场白**: 30秒/1分钟/2分钟版本
+- **针对不同面试官**: HR/产品负责人/高管
+- **针对不同场景**: 面试官自我介绍后、直接提问、为什么选择MiniMax
+- **针对不同风格**: 专业正式型、亲和自然型、数据驱动型
+- **针对特殊情况**: 时间紧张、技术背景、业务背景
+- **破冰技巧**: 注意事项和使用建议
+
+#### 文件 5: 最终分析报告 (`05_final_analysis_report.md`)
+- **综合评估**: 优势总结、待提升点、应对策略
+- **核心竞争力定位**: 三大能力深度分析
+- **面试成功要素**: 展示了解、证明匹配、展示学习
+- **风险评估**: 高风险问题及应对策略
+- **面试准备清单**: 详细的行动计划
+- **薪资谈判策略**: 原则和话术
+
 ---
 
-# Interview Intel
+## ⚠️ 重要说明
 
-## Overview
+**v1.0.0 最新状态**:
 
-A comprehensive job application strategy system that helps candidates bridge the gap between their resume and target positions in a competitive job market. Goes beyond simple document preparation to implement recruitment game theory, STAR-based optimization, and multi-round interview attack-defense strategies.
+- ✅ **依赖自动安装**: 自动安装 pdfplumber 用于读取 PDF 简历
+- ✅ **简历读取优化**: 支持从 resumes/ 目录自动查找简历
+- ✅ **一键完成方案**: 配合 Claude Code 实现全自动化
+  - 自动读取简历提取经历
+  - 自动搜索公司最新信息
+  - 主动询问缺失信息
+  - 生成 100% 完成的面试准备包
+- ✅ **事实验证协议**: 零容忍原则，确保所有内容基于真实简历
+- ✅ **统一脚本**: `all_in_one.py` 集成所有内容生成逻辑
 
-**Core Capabilities**:
-1. **Smart Resume-JD Matching**: Deep JD analysis with hidden insights + STAR-based resume rewrite suggestions
-2. **Interview Strategy Generation**: Simulates HR/Business/Executive rounds with defense scripts and killer cases
-3. **Icebreaker Message Creation**: Generates platform-optimized opening messages (Boss直聘, LinkedIn)
-4. **Interview Tracking**: Structured tracking of all application stages and feedback
-5. **Resume Version Management**: Maintains multiple resume versions with usage tracking
+**两种使用方式**:
 
-**IMPORTANT**: All materials are organized under `companies/[CompanyName]/` directory structure for easy navigation.
+1. **配合 Claude Code（最推荐）**: 一键完成所有工作，包括框架生成和内容填充
+2. **手动使用脚本**: 生成框架后手动补充内容
 
-## ⚡ Quick Start: One-Click Execution
+---
 
-**The fastest way to use this skill**: Run the all-in-one workflow script that generates everything in one command.
+## 🚀 使用方式
 
-### Basic Usage
+### 方式 1: 配合 Claude Code 一键完成(最推荐)⭐⭐⭐
+
+**适用场景**: 使用 Claude Code，希望**一键完成所有工作**
+
+#### 完整工作流程:
+
+**第1步: 向 Claude Code 提供信息**
+
+```
+我想应聘 MiniMax 的 B端大模型产品经理职位
+
+JD: [粘贴 JD 内容]
+
+我的简历在 InterviewIntel/resumes/王蕾-AI 产品经理V1.0.pdf
+
+请帮我一键生成完整的面试准备包。
+```
+
+**第2步: Claude Code 自动执行**
+
+Claude Code 会自动完成以下工作:
+
+1. **安装依赖**(如需要)
+   - 自动安装 pdfplumber 用于读取 PDF 简历
+
+2. **读取简历提取信息**
+   - 从 resumes/ 目录读取你的 PDF 简历
+   - 提取核心工作经历和成就
+
+3. **补充公司和行业信息**
+   - 自动搜索公司最新信息(上市、融资、产品)
+   - 获取竞争对手和行业趋势
+
+4. **生成 5 个完整的 Markdown 文件**
+   - 填充所有内容,生成完整的 STAR 案例
+   - 生成针对性的面试话术
+   - 生成匹配度分析
+
+**第3步: 输出完整文件**
+
+生成 5 个 100% 完成的文件,保存在 `companies/[公司名]/` 目录:
+- ✅ `01_company_intel_brief.md`
+- ✅ `02_resume_jd_matching.md`
+- ✅ `03_interview_prep_report.md`
+- ✅ `04_icebreaker_messages.md`
+- ✅ `05_final_analysis_report.md`
+
+#### 提示词模板:
+
+**模板 1: 基础使用**
+
+```
+我想应聘 [公司名] 的 [职位名称]
+
+JD: [粘贴 JD 内容]
+
+我的简历在 InterviewIntel/resumes/王蕾-AI 产品经理V1.0.pdf
+
+请帮我一键生成完整的面试准备包。
+```
+
+**模板 2: 提供更多信息**
+
+```
+我想应聘 MiniMax 的 B端大模型产品经理职位
+
+公司: MiniMax
+职位: B端大模型产品经理
+JD: [粘贴 JD 内容]
+简历: InterviewIntel/resumes/王蕾-AI 产品经理V1.0.pdf
+行业: AI大模型
+关键词: AI产品,大模型,ToB,开放平台
+工作年限: 6年
+核心成就: 主导AI产品从0到1,用户增长300%
+
+请帮我生成完整的面试准备包。
+```
+
+**模板 3: 使用外部简历**
+
+```
+我想应聘某公司的产品经理职位
+
+公司: [公司名]
+职位: [职位名称]
+JD: [粘贴 JD 内容]
+简历: /path/to/my/resume.pdf
+项目路径: /Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel
+
+请帮我生成完整的面试准备包。
+```
+
+#### 优势:
+
+- ✅ **真正的一键完成**: 从框架到内容填充,全部自动化
+- ✅ **自动安装依赖**: 首次使用自动安装 pdfplumber
+- ✅ **主动询问**: 遇到信息不足会主动询问
+- ✅ **真实数据**: 基于你的简历和最新公司信息
+- ✅ **个性化定制**: 每个内容都是针对你定制的
+
+---
+
+### 方式 2: 使用统一脚本生成框架(传统方式)
+
+使用 `all_in_one.py` 生成框架后手动补充内容:
 
 ```bash
-python scripts/all_in_one.py execute \
-  --base-path ~/InterviewIntel \
-  --company "公司名称" \
-  --role "职位名称" \
-  --jd-file jd.txt \
-  --resume-version v1.0
+cd /Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel/interview-intel
+python scripts/all_in_one.py \
+  --base-path "/Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel" \
+  --company "MiniMax" \
+  --role "B端大模型产品经理" \
+  --industry "AI大模型" \
+  --keywords "AI大模型,开放平台,ToB" \
+  --years 6
 ```
 
-### What It Does
+**注意**: 此方式只生成框架,需要手动补充 `[待补充]` 内容
 
-One command generates:
-1. ✅ Company folder structure (`companies/公司名称/`)
-2. ✅ JD deep analysis with hidden insights
-3. ✅ Resume-JD matching report with STAR rewrite suggestions
-4. ✅ Interview attack-defense strategy (HR/Business/Executive rounds)
-5. ✅ Icebreaker messages (Strategy A + B)
-6. ✅ All raw data and metadata
+---
 
-### Full Example
+## 📚 斜杠命令说明
+
+### /interview 命令
+
+**触发条件**: 用户说 "我想应聘..." 或直接调用 /interview
+
+**自动执行流程**:
+
+1. **收集信息**
+   - 询问公司名称(使用 AskUserQuestion)
+   - 询问目标职位
+   - 询问 JD 来源(有内容/有文件/暂时没有)
+   - 询问简历位置(默认/其他)
+
+2. **自动执行**
+   - 安装依赖(pdfplumber)
+   - **读取简历提取信息** ⚠️ 必须使用 pdfplumber，不能用 Read 工具
+   - 搜索公司最新信息
+   - 生成 5 个完整文件
+
+3. **主动询问**(如需要)
+   - 如果背景信息不足,主动询问用户
+   - 例如:"请提供公司官网"或"你对哪个产品最熟悉?"
+
+---
+
+### 🔧 PDF读取最佳实践
+
+**⚠️ 关键原则**: 必须使用 `pdfplumber` 读取PDF简历，不能使用 `Read` 工具
+
+**原因**:
+1. `Read` 工具对某些PDF格式支持有限，可能返回URL而非内容
+2. `pdfplumber` 专门用于PDF文本提取，可靠性高
+3. 支持中文PDF和各种编码格式
+
+**正确实现**:
+```python
+import pdfplumber
+
+def read_resume(pdf_path):
+    """读取 PDF 简历并提取文本"""
+    with pdfplumber.open(pdf_path) as pdf:
+        text = ''
+        for page in pdf.pages:
+            text += page.extract_text() + '\n'
+        return text
+```
+
+**错误做法** ❌:
+```python
+# 不要使用 Read 工具读取PDF
+Read(file_path="resumes/简历.pdf")  # 这可能失败
+```
+
+**正确做法** ✅:
+```python
+# 使用 Bash 工具运行 Python 脚本
+Bash(command="""
+python3 << 'EOF'
+import pdfplumber
+with pdfplumber.open('resumes/简历.pdf') as pdf:
+    text = ''
+    for page in pdf.pages:
+        text += page.extract_text() + '\n'
+    print(text)
+EOF
+""")
+```
+
+**测试PDF读取功能**:
+```bash
+# 运行测试脚本验证
+python3 interview-intel/scripts/test_pdf_reader.py
+```
+
+---
+
+### 快速开始示例
+
+**示例 1: 最简方式**
+
+```
+我想应聘 MiniMax 的 AI产品经理职位
+
+JD: [粘贴 JD 内容]
+
+请帮我一键生成完整的面试准备包。
+```
+
+**示例 2: 提供完整信息**
+
+```
+我想应聘智谱AI的AI产品经理职位
+
+公司: 智谱AI
+职位: AI产品经理
+JD: [粘贴 JD 内容]
+简历: InterviewIntel/resumes/王蕾-AI 产品经理V1.0.pdf
+行业: AI大模型
+关键词: AI产品,大模型,ToB
+工作年限: 6年
+核心成就: 主导AI产品从0到1,用户增长300%
+
+请帮我生成完整的面试准备包。
+```
+
+**示例 3: 使用外部简历**
+
+```
+我想应聘月之暗面的产品经理职位
+
+公司: 月之暗面
+职位: 产品经理
+JD: [粘贴 JD 内容]
+简历: /path/to/my/resume.pdf
+项目路径: /Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel
+
+请帮我生成完整的面试准备包。
+```
+
+---
+
+## 🔧 技术实现
+
+### 依赖管理
+
+**首次使用自动安装**:
+
+```python
+# 自动安装 pdfplumber
+import subprocess
+import sys
+
+try:
+    import pdfplumber
+except ImportError:
+    subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pdfplumber', '-q', '--user'])
+    import pdfplumber
+```
+
+**⚠️ 重要**: 必须使用 `pdfplumber` 读取PDF，不能使用其他工具（如 `Read` 工具），因为：
+1. `Read` 工具对某些PDF格式支持有限，可能返回URL而非内容
+2. `pdfplumber` 专门用于PDF文本提取，可靠性高
+3. 支持中文PDF和各种编码格式
+
+### 简历读取实现
+
+```python
+import pdfplumber
+
+def read_resume(pdf_path):
+    """读取 PDF 简历并提取文本"""
+    with pdfplumber.open(pdf_path) as pdf:
+        text = ''
+        for page in pdf.pages:
+            text += page.extract_text() + '\n'
+        return text
+```
+
+### 文件结构
+
+```
+InterviewIntel/
+├── companies/               # 面试准备包输出目录
+│   └── [公司名]/
+│       ├── 01_company_intel_brief.md
+│       ├── 02_resume_jd_matching.md
+│       ├── 03_interview_prep_report.md
+│       ├── 04_icebreaker_messages.md
+│       └── 05_final_analysis_report.md
+├── resumes/                 # 简历存放目录
+│   ├── 王蕾-AI 产品经理V1.0.pdf
+│   └── ...
+└── interview-intel/
+    └── SKILL.md             # 本文档
+```
+
+---
+
+## 📖 使用流程
+
+### 标准流程(推荐)
+
+```
+1. 准备信息
+   ├── JD 文本
+   ├── 公司名称
+   └── 职位名称
+
+2. 调用 /interview 命令
+   └── 一键生成 5 个完整文件
+
+3. 阅读准备
+   ├── 01_company_intel_brief.md (了解公司)
+   ├── 02_resume_jd_matching.md (了解匹配度)
+   ├── 03_interview_prep_report.md (准备面试话术)
+   ├── 04_icebreaker_messages.md (准备开场白)
+   └── 05_final_analysis_report.md (制定行动计划)
+
+4. 面试实战
+   ├── 准备核心案例
+   ├── 模拟面试练习
+   └── 参加面试
+```
+
+---
+
+## 🎯 最佳实践
+
+### 面试准备时间规划
+
+**第1天**: 生成并阅读所有文件
+**第2-3天**: 深度理解公司和职位
+**第4-5天**: 准备核心案例和话术
+**第6天**: 模拟面试练习
+**第7天**: 面试前最后复习
+
+### 核心文件阅读顺序
+
+1. **05_final_analysis_report.md** - 先看行动计划,了解全局
+2. **01_company_intel_brief.md** - 了解公司和职位
+3. **02_resume_jd_matching.md** - 了解自己的匹配度
+4. **03_interview_prep_report.md** - 准备面试话术
+5. **04_icebreaker_messages.md** - 准备开场白
+
+### 面试前快速复习
+
+- 只读各文件的"核心信息速览"部分
+- 重点标记关键数据和话术
+- 准备好问面试官的问题
+
+---
+
+## 🔧 故障排查
+
+### PDF读取问题诊断
+
+**症状**: 简历读取失败或返回URL而非内容
+
+**诊断步骤**:
+
+1. **运行测试脚本**
+   ```bash
+   python3 interview-intel/scripts/test_pdf_reader.py
+   ```
+
+2. **检查依赖**
+   ```bash
+   python3 -c "import pdfplumber; print('✅ pdfplumber 已安装')"
+   ```
+
+3. **检查PDF文件**
+   ```bash
+   file resumes/你的简历.pdf
+   # 应该输出: PDF document, version X.X
+   ```
+
+4. **检查文件权限**
+   ```bash
+   ls -lh resumes/你的简历.pdf
+   # 确保文件可读
+   ```
+
+**常见解决方案**:
+
+| 问题 | 解决方案 |
+|------|----------|
+| `pdfplumber` 未安装 | `pip3 install pdfplumber --user -q` |
+| PDF路径错误 | 使用绝对路径或确认相对路径正确 |
+| PDF是扫描版 | 使用 OCR 工具转换或提供文字版 |
+| 返回URL而非内容 | 确保使用 `pdfplumber` 而非 `Read` 工具 |
+
+---
+
+## 🔄 更新日志
+
+### v1.0.0 (2025-02-08) ⭐ 首个公开版本
+
+**核心功能**:
+
+- ✅ **事实验证协议**: 零容忍原则，确保所有内容基于真实简历
+- ✅ **一键生成工作流**: 5个标准Markdown文件自动生成
+- ✅ **AI智能填充**: STAR案例、面试话术、破冰文案
+- ✅ **简历读取优化**: 自动安装 pdfplumber，支持PDF简历
+- ✅ **完整文档体系**: 用户指南、FAQ、分享指南
+
+**技术改进**:
+
+- 🔧 自动检测并安装依赖
+- 🔧 支持 PDF 简历自动读取
+- 🔧 优化文件查找逻辑
+- 🔧 Git 版本管理和发布流程
+
+**重大升级**:
+
+- ✨ **统一脚本**: 使用 `all_in_one.py`,集成所有内容生成逻辑
+- ✨ **智能 JD 解析**: 自动提取职责描述和任职要求
+- ✨ **自动生成破冰文案**: 两种策略(专业匹配型 + 业务洞察型)
+- ✨ **智能匹配分析**: 基于工作年限和成就自动生成匹配度框架
+- ✨ **面试策略框架**: 自动生成 HR/业务/高管三轮策略
+- 🎉 **一键完成方案**: 配合 Claude Code 实现全自动化
+  - 自动读取简历提取真实经历
+  - 自动搜索公司最新信息
+  - 主动询问缺失信息
+  - AI 智能填充所有 `[待补充]` 内容
+  - 生成 100% 完成的面试准备包
+
+### v1.0.0 (2026-01-21)
+
+**重大升级**:
+
+- ✨ 标准化 5 个输出文件结构
+- ✨ 新增详细版+精简版双模式
+- ✨ 新增 `company_researcher.py` 脚本
+- ✨ 新增 `final_report_generator.py` 脚本
+- ✨ 统一文件命名规范(数字前缀)
+
+---
+
+## 🛠️ 技术栈
+
+- **语言**: Python 3.8+
+- **依赖**:
+  - `pdfplumber`: PDF 简历读取(自动安装)
+- **输出**: Markdown 格式
+- **存储**: 本地文件系统
+
+---
+
+## 📞 常见问题
+
+### Q1: 首次使用报错 "ModuleNotFoundError: No module named 'pdfplumber'"
+
+**A**: 这是正常的,系统会自动安装 pdfplumber。如果自动安装失败,请手动执行:
 
 ```bash
-python scripts/all_in_one.py execute \
-  --base-path ~/InterviewIntel \
-  --company "京东物流" \
-  --role "运输产品经理" \
-  --jd-file jd_logistics.txt \
-  --resume-version v1.0 \
-  --resume-file my_resume.txt \
-  --achievement "主导 AI 产品从 0 到 1,用户增长 300%" \
-  --years 6 \
-  --insight "物流供应链智能化"
+pip3 install pdfplumber --user -q
 ```
 
-### Output Structure
+### Q2: 简历读取失败
 
-All files are saved to `companies/京东物流/`:
-```
-companies/京东物流/
-├── jd_analysis_运输产品经理.md              # JD 深度分析
-├── resume_mapping_运输产品经理.md           # 简历匹配报告
-├── interview_strategy_运输产品经理.md       # 面试攻防策略
-├── icebreaker_京东物流_运输产品经理.md      # 破冰文案
-├── raw_data/
-│   ├── jd_original_运输产品经理.txt        # 原始 JD
-│   └── jd_keywords_运输产品经理.txt        # 关键词提取
-└── workflow_metadata_运输产品经理.json      # 工作流元数据
-```
+**A**: 请检查:
+1. 简历文件是否在 `InterviewIntel/resumes/` 目录
+2. 简历文件是否是 PDF 格式
+3. 文件路径是否正确
+4. 是否使用了 `pdfplumber` 而不是 `Read` 工具
 
-### When to Use One-Click vs Individual Scripts
-
-**Use one-click workflow when**:
-- Starting analysis for a new company/role
-- Need complete preparation package quickly
-- Want consistent output structure
-
-**Use individual scripts when**:
-- Only need specific analysis (e.g., just JD keywords)
-- Iterating on specific sections
-- Fine-tuning parameters for advanced use cases
-
-## New Features (v4.0 → v5.0)
-
-### 1. Resume Optimizer (`resume_optimizer.py`)
-- **JD Deep Analysis**: Extracts hard requirements, core competencies, and hidden insights ("what they really want")
-- **STAR-Based Rewriting**: Provides structured suggestions to rewrite experiences using Situation-Task-Action-Result framework
-- **Keyword Highlighting**: Identifies and highlights matching keywords between resume and JD
-- **Match Score Calculation**: Quantifies resume-JD alignment across multiple dimensions
-
-### 2. Interview Strategy Generator (`interview_strategy.py`)
-- **Round 1 (HR)**: Risk identification + defense scripts for common concerns (job hopping, gaps, career change)
-- **Round 2 (Business)**: Predicts likely questions + killer case templates + deep-dive topic preparation
-- **Round 3 (Executive)**: Strategic questions + macro topics + business thinking preparation
-- **Risk Mitigation**: Turns weaknesses into strengths with tactical approaches
-
-### 3. Icebreaker Generator (`icebreaker_generator.py`)
-- **Strategy A (Professional Match)**: For HR and formal processes - direct, data-driven, concise
-- **Strategy B (Business Insight)**: For business leads and startups - warm, insightful, peer-to-peer
-- **Usage Guide**: When to use each strategy, timing, forbidden phrases, bonus tips
-
-## Core Principles
-
-1. **Precision Matching**: Align resume with JD keywords without fabrication
-2. **STAR Framework**: All experience rewrites follow Situation-Task-Action-Result structure with quantified results
-3. **Transparency**: Hidden insights expose what recruiters really want beyond surface requirements
-4. **No BS**: Direct, professional output focused on passing screening stages
-
-## File Organization
-
-### Automatic Folder Structure
-
-All company materials are organized under `companies/` directory:
-
-```
-companies/
-└── [CompanyName]/
-    ├── company_intel_brief.md              # Company background research
-    ├── jd_analysis_[RoleName].md          # JD analysis for specific roles
-    ├── jd_deep_analysis_[RoleName].json   # 🆕 Deep JD insights (hidden requirements)
-    ├── resume_mapping_[RoleName].md       # Resume-to-JD alignment
-    ├── resume_optimization_[RoleName].md  # 🆕 STAR-based rewrite suggestions
-    ├── interview_prep_[RoleName].md       # Comprehensive prep report
-    ├── interview_strategy_[RoleName].md   # 🆕 Attack-defense strategies
-    ├── icebreaker_[CompanyName]_[Role].md # 🆕 Opening messages
-    ├── raw_data/                          # Original data
-    │   ├── jd_original_[RoleName].txt    # Original JD text
-    │   └── jd_keywords_[RoleName].txt    # Keyword extraction output
-    ├── resumes/                           # Company-specific resume versions
-    │   ├── resume_[RoleName]_v1.pdf      # Tailored resume versions
-    │   └── tailoring_log.json            # Resume customization log
-    ├── interviews/                        # Interview tracking
-    │   ├── tracking.json                 # Structured interview data
-    │   ├── round_1_notes.md              # Detailed round notes
-    │   ├── round_2_notes.md
-    │   └── feedback.md                   # Interview feedback
-    ├── notes.md                           # Interview notes and updates
-    └── README.md                          # Folder overview
-```
-
-**Global directories**:
-```
-resumes/                               # Master resume versions
-├── master_resume_v1.0.pdf
-├── master_resume_v2.0.pdf
-├── resume_registry.json               # Version tracking
-└── CHANGELOG.md                       # Version history
-```
-
-### Setup Tool
-
-**Before starting any analysis**, run the setup script to create the folder structure:
-
+**测试PDF读取**:
 ```bash
-python scripts/setup_company_folder.py <base_path> "<CompanyName>" ["<RoleName>"]
+python3 interview-intel/scripts/test_pdf_reader.py
 ```
 
-**Example**:
-```bash
-python scripts/setup_company_folder.py ~/InterviewIntel "Google" "Senior Backend Engineer"
+### Q2.1: 为什么不能使用 Read 工具读取PDF?
+
+**A**: `Read` 工具对某些PDF格式支持有限，可能返回URL而非内容。**必须使用 `pdfplumber`**:
+
+❌ **错误**:
+```python
+Read(file_path="resumes/简历.pdf")  # 可能失败
 ```
 
-The script will:
-1. Create the company folder with sanitized name
-2. Set up subfolders: raw_data/, resumes/, interviews/
-3. Generate README.md and notes.md templates
-4. Initialize tracking.json for interview tracking
-5. Output JSON with all file paths for easy reference
-
-**Always save outputs to the appropriate files in the company folder structure.**
-
-## Core Capabilities
-
-### 1. Company Intelligence Gathering
-Research and compile actionable intelligence about target companies, focusing on:
-- Product and business model understanding
-- Recent developments and strategic direction
-- Technology stack and engineering culture
-- Team structure and key leadership
-
-**When to use**: Before starting interview prep, or when user asks to research a company.
-
-**Output**: Use the [company_intel_brief_template.md](assets/company_intel_brief_template.md) to create structured company intelligence reports.
-
-**Process**:
-1. Start with company basics (size, stage, funding, industry)
-2. Understand their products and target market
-3. Research recent developments (last 6-12 months)
-4. Investigate culture and values (Glassdoor, blog posts)
-5. Identify key team members and leadership
-6. Compile interview process intelligence if available
-
-**Reference**: See [company_research_guide.md](references/company_research_guide.md) for detailed research framework and source recommendations.
-
-### 2. Job Description Analysis
-Systematically extract and categorize requirements from job postings:
-- Technical skills (must-have vs nice-to-have)
-- Experience requirements and levels
-- Soft skills and cultural fit indicators
-- Responsibility scope and impact expectations
-
-**When to use**: When user provides a JD or asks to analyze a role's requirements.
-
-**Tools**:
-- **Script**: Use [extract_jd_keywords.py](scripts/extract_jd_keywords.py) to automatically extract technical keywords, experience requirements, and common phrases from JD text
-  - Usage: `python scripts/extract_jd_keywords.py jd_file.txt` or pipe JD text via stdin
-  - Output: Categorized technical skills, experience levels, soft skills, and requirement strength (required vs preferred)
-
-**Process**:
-1. Run the extraction script for initial keyword analysis
-2. Classify the role (level, type, team focus)
-3. Separate required vs preferred skills
-4. Identify experience expectations (years, complexity, scale)
-5. Extract soft skill emphasis
-6. Analyze team stage and context clues
-7. Prioritize preparation topics
-
-**Reference**: See [jd_analysis_framework.md](references/jd_analysis_framework.md) for comprehensive analysis structure and output templates.
-
-### 3. Resume-JD Alignment Mapping
-Map candidate background to role requirements to identify:
-- Direct matches (strong evidence)
-- Adjacent matches (transferable experience)
-- Gaps (areas to address or learn)
-- Key stories to prepare
-
-**When to use**: After analyzing JD and when user provides their resume or background.
-
-**Process**:
-1. Extract key requirements from JD analysis
-2. For each requirement, find resume evidence
-3. Categorize match strength (strong/medium/weak)
-4. Identify gaps and develop mitigation strategies
-5. Select top 5-7 stories that demonstrate strengths
-6. Prepare talking points for gaps
-
-**Output Format**:
-- Strength assessment matrix (requirement → evidence → match type → strength)
-- Gap analysis with mitigation strategies
-- Prioritized story preparation list
-- Questions to ask based on gaps or interests
-
-**Reference**: See [resume_jd_mapping.md](references/resume_jd_mapping.md) for detailed mapping methodology and story preparation templates.
-
-### 4. Resume Version Management
-Manage multiple resume versions with complete file storage and tracking:
-- Create and store master resume versions with metadata
-- Tailor resumes for specific companies and roles
-- Track which version was used for each application
-- Compare versions to understand changes
-- Recommend best version for a given JD
-
-**When to use**: When user has multiple resume versions or needs to tailor resume for specific applications.
-
-**Tools**:
-- **Script**: Use [resume_manager.py](scripts/resume_manager.py) for complete resume version management
-  - Create new versions: `python scripts/resume_manager.py create --file resume.pdf --version v1.0 --desc "Description" --target "Backend,Full-stack" --skills "Python,AWS"`
-  - List all versions: `python scripts/resume_manager.py list [--filter Backend]`
-  - Tailor for company: `python scripts/resume_manager.py tailor --base v1.0 --company SIF --role "Backend Engineer" --output ~/InterviewIntel/SIF/resumes/`
-  - Compare versions: `python scripts/resume_manager.py compare --v1 v1.0 --v2 v2.0`
-  - Get recommendations: `python scripts/resume_manager.py recommend --target "Backend Engineer" --requirements "Python,Docker,AWS"`
-  - Usage report: `python scripts/resume_manager.py report [--version v1.0]`
-
-**Process**:
-1. Create master resume versions in the global `resumes/` folder
-2. Each version has metadata: target positions, key skills, description
-3. When applying to a company, tailor a version for that specific role
-4. Tailored versions are stored in the company's `resumes/` folder
-5. Track which version was used in interview tracking data
-
-**Global Resume Structure**:
-```
-resumes/
-├── master_resume_v1.0.pdf           # Master version files
-├── master_resume_v2.0.pdf
-├── resume_registry.json             # Version metadata and tracking
-└── CHANGELOG.md                     # Version history
+✅ **正确**:
+```python
+import pdfplumber
+with pdfplumber.open('resumes/简历.pdf') as pdf:
+    text = ''
+    for page in pdf.pages:
+        text += page.extract_text() + '\n'
 ```
 
-**Template**: Use [resume_changelog_template.md](assets/resume_changelog_template.md) to document resume version changes.
+### Q2.2: PDF读取时出现警告信息
 
-### 5. Interview Tracking
-Track interview progress with structured data and detailed notes:
-- Initialize tracking for each application
-- Record each interview round with metadata
-- Track interviewer information and focus areas
-- Document feedback, difficulty, and confidence levels
-- Maintain timeline of all events
-- Record final decision and offer details
+**A**: 如果看到类似 `Could not get FontBBox from font descriptor` 的警告，这是正常的。这些警告不影响文本提取，可以忽略。
 
-**When to use**: When user starts applying to companies and scheduling interviews.
+### Q2.3: PDF是扫描版图片怎么办?
 
-**Tools**:
-- **Script**: Use [interview_tracker.py](scripts/interview_tracker.py) for structured interview tracking
-  - Initialize tracking: `python scripts/interview_tracker.py init --company-path ~/InterviewIntel/SIF --company SIF --role "Backend Engineer" --resume v2.0`
-  - Add interview round: `python scripts/interview_tracker.py add-round --company-path ~/InterviewIntel/SIF --round 1 --name "Phone Screen" --date 2026-01-25 --interviewer "John Doe"`
-  - Update round status: `python scripts/interview_tracker.py update --company-path ~/InterviewIntel/SIF --round 1 --status completed --result passed --difficulty 3 --confidence 4`
-  - View status: `python scripts/interview_tracker.py status --company-path ~/InterviewIntel/SIF`
-  - Generate timeline: `python scripts/interview_tracker.py timeline --company-path ~/InterviewIntel/SIF [--format text|json]`
+**A**: 如果PDF是扫描版图片，`pdfplumber` 无法提取文本。需要使用 OCR 工具，建议:
+1. 使用 Adobe Acrobat 或其他工具进行 OCR 识别
+2. 或者提供文字版的简历
 
-**Process**:
-1. Initialize tracking when application is submitted
-2. Add interview rounds as they are scheduled
-3. For each round, create detailed notes using the template
-4. Update round status and results after completion
-5. Track follow-up actions (thank you emails, connections)
-6. Update final decision when received
+### Q3: 没有提供简历路径怎么办
 
-**Tracking Data Structure**:
-- Application info: company, role, date, resume version used
-- Timeline: chronological events (submitted, scheduled, completed, decision)
-- Interview rounds: detailed info per round (interviewer, focus areas, result, feedback)
-- Overall statistics: pass rate, total rounds, current status
-- Decision: final outcome and offer details if applicable
+**A**: 系统会自动在 `InterviewIntel/resumes/` 目录查找简历。如果找不到,会询问你具体的简历路径。
 
-**Template**: Use [interview_round_notes_template.md](assets/interview_round_notes_template.md) for detailed round notes.
+### Q4: 想使用其他位置的简历
 
-### 6. Analytics and Statistics
-Generate comprehensive statistics and visualizations across all applications:
-- Global statistics: total applications, response rate, offer rate
-- Resume version performance: which versions get more responses
-- Position type analysis: success rates by role type
-- Interview performance: pass rates, difficulty, confidence tracking
-- Timeline visualization: application history and trends
-- Export data to CSV for external analysis
-- Generate HTML dashboard with interactive charts
-
-**When to use**: When user wants to review overall progress or analyze interview performance.
-
-**Tools**:
-- **Script**: Use [analytics_generator.py](scripts/analytics_generator.py) for statistics and reports
-  - Generate global stats: `python scripts/analytics_generator.py generate --scope global`
-  - Company-specific stats: `python scripts/analytics_generator.py generate --scope company --company SIF`
-  - Export to CSV: `python scripts/analytics_generator.py export --format csv --output interview_data.csv`
-  - Generate HTML dashboard: `python scripts/analytics_generator.py dashboard --output dashboard.html`
-
-**Process**:
-1. Script scans all company folders for tracking.json files
-2. Aggregates data across all applications
-3. Calculates statistics: response rates, pass rates, averages
-4. Groups by resume version, position type, timeline
-5. Generates visualizations and reports
-
-**Output Formats**:
-- JSON: Detailed statistics in `.analytics/global_stats.json`
-- CSV: Tabular data for Excel/spreadsheet analysis
-- HTML: Interactive dashboard with Chart.js visualizations
-
-**Analytics Structure**:
-```
-.analytics/
-├── global_stats.json                # Aggregated statistics
-├── company_stats.json               # Per-company breakdowns
-├── resume_usage.json                # Resume version performance
-└── exports/
-    ├── interview_data.csv           # CSV exports
-    └── dashboard.html               # Interactive dashboard
-```
-
-### 7. Comprehensive Interview Preparation Report
-Generate a complete prep document combining all analyses:
-- Company intelligence summary
-- JD requirements breakdown
-- Resume alignment and gaps
-- Preparation priorities
-- Story bank (STAR format)
-- Questions to ask
-- Key talking points
-
-**When to use**: After completing company research, JD analysis, and resume mapping.
-
-**Template**: Use [interview_prep_report_template.md](assets/interview_prep_report_template.md) as the structure for final preparation reports.
-
-**This should include**:
-- Executive summary with key takeaways
-- Company overview and recent context
-- Role analysis with technical and soft skill requirements
-- Alignment matrix showing strengths and gaps
-- Top 5+ prepared stories in STAR format
-- Prioritized study topics
-- Strategic questions to ask
-- Key talking points and value proposition
-
-## Workflow
-
-### Standard Interview Prep Flow
+**A**: 在调用 /interview 时明确指定简历路径:
 
 ```
-1. User provides target company and role
-   ↓
-2. Setup company folder structure
-   - Run: setup_company_folder.py <base_path> "<Company>" "<Role>"
-   - Creates organized folder structure
-   - Outputs file paths in JSON
-   ↓
-3. Gather company intelligence
-   - Research company basics, products, culture
-   - Save to: [Company]/company_intel_brief.md
-   ↓
-4. Analyze job description
-   - Save original JD to: [Company]/raw_data/jd_original_[Role].txt
-   - Run JD extraction script, save output to: [Company]/raw_data/jd_keywords_[Role].txt
-   - Perform detailed analysis
-   - Save to: [Company]/jd_analysis_[Role].md
-   ↓
-5. Map resume to requirements
-   - Assess alignment (strong/medium/weak)
-   - Identify gaps and prepare stories
-   - Save to: [Company]/resume_mapping_[Role].md
-   ↓
-6. Generate comprehensive prep report
-   - Combine all analyses
-   - Prioritize preparation
-   - Create story bank
-   - Save to: [Company]/interview_prep_[Role].md
-   ↓
-7. Maintain interview notes
-   - Update [Company]/notes.md with interview experiences
-   - Track timeline and follow-ups
+我的简历在 /path/to/my/resume.pdf
 ```
 
-### Quick JD Analysis Flow
+---
 
-```
-1. User provides JD text or file
-   ↓
-2. Setup company folder (if not exists)
-   - Run: setup_company_folder.py <base_path> "<Company>" "<Role>"
-   ↓
-3. Save original JD
-   - Save to: [Company]/raw_data/jd_original_[Role].txt
-   ↓
-4. Run extract_jd_keywords.py script
-   - Save output to: [Company]/raw_data/jd_keywords_[Role].txt
-   ↓
-5. Perform detailed JD analysis
-   - Save to: [Company]/jd_analysis_[Role].md
-```
+## 📄 许可
 
-### Company Research Only Flow
+MIT License
 
-```
-1. User requests company research
-   ↓
-2. Setup company folder (if not exists)
-   - Run: setup_company_folder.py <base_path> "<Company>"
-   ↓
-3. Gather intelligence using research guide
-   ↓
-4. Save to: [Company]/company_intel_brief.md
-```
+---
 
-## Usage Examples
+**最后更新**: 2025-02-08
+**版本**: v1.0.0 (首个公开版本，完整功能 + 事实验证协议)
+**作者**: Interview Intel Team
 
-### Example 1: Full Interview Prep
+**v1.0.0 核心功能**:
+- ✅ 事实验证协议，零幻觉保证
+- ✅ 一键生成面试准备包（5个标准文件）
+- ✅ AI 智能填充内容（STAR案例、面试话术）
+- 🎉 完善一键完成方案,更流畅的用户体验
+- 📝 更新命令文档,提供更多使用示例
+- ✅ 优化错误处理和提示信息
 
-**User**: "Help me prepare for a Senior Backend Engineer interview at DataCorp. Here's the JD: [JD text]. And here's my resume: [resume]."
-
-**Response**:
-1. Run setup_company_folder.py to create DataCorp folder structure
-2. Save original JD to DataCorp/raw_data/jd_original_Senior_Backend_Engineer.txt
-3. Extract and analyze JD using the script, save to raw_data/jd_keywords_Senior_Backend_Engineer.txt
-4. Research DataCorp company intelligence, save to DataCorp/company_intel_brief.md
-5. Map user's resume to JD requirements, save to DataCorp/resume_mapping_Senior_Backend_Engineer.md
-6. Generate comprehensive Interview Prep Report, save to DataCorp/interview_prep_Senior_Backend_Engineer.md
-7. Highlight top 3 strengths and top 2 gaps in the report
-8. Provide 5 key stories to prepare
-9. Suggest priority study topics
-
-### Example 2: JD Analysis Only
-
-**User**: "Can you analyze this job description and tell me what I should focus on? [JD text]"
-
-**Response**:
-1. Ask for company name and role title
-2. Run setup_company_folder.py to create folder structure
-3. Save JD to [Company]/raw_data/jd_original_[Role].txt
-4. Run extract_jd_keywords.py, save to [Company]/raw_data/jd_keywords_[Role].txt
-5. Perform detailed analysis using framework
-6. Save structured JD analysis to [Company]/jd_analysis_[Role].md
-7. Suggest preparation priorities
-
-### Example 3: Company Research
-
-**User**: "I have an interview with TechStartup next week. What should I know about them?"
-
-**Response**:
-1. Run setup_company_folder.py ~/InterviewIntel "TechStartup"
-2. Research company using company_research_guide
-3. Gather product, business, culture info
-4. Find recent developments
-5. Identify interview relevance
-6. Save Company Intel Brief to TechStartup/company_intel_brief.md
-
-## Tips for Effective Use
-
-### When Gathering Company Intelligence
-- Start with company website, blog, and LinkedIn
-- Try their product if possible (hands-on experience impresses)
-- Look for recent news (last 6 months most relevant)
-- Check Glassdoor for culture insights
-- Note engineering blog posts for technical culture
-
-### When Analyzing JDs
-- Pay attention to what's mentioned repeatedly (true priorities)
-- Distinguish "must have" from "nice to have" (often buried in language)
-- Look for scale indicators (users, traffic, data volume)
-- Note the team stage (build/scale/maintain mode)
-- Consider context: same title means different things at different companies
-
-### When Mapping Resume to JD
-- Be honest about match strength (gaps are opportunities to show learning ability)
-- Prepare stories for your strongest matches
-- For gaps, emphasize transferable concepts
-- Quantify everything possible (team size, user scale, performance improvements)
-- Practice articulating the "why" behind technical decisions
-
-### When Preparing Stories
-- Use STAR format (Situation, Task, Action, Result)
-- Include specific metrics and outcomes
-- Prepare 2-minute and 5-minute versions
-- Make them adaptable to different question angles
-- Focus on your individual contributions, not just "we"
-
-### General Best Practices
-- Update analysis as you learn more through interviews
-- Prepare questions that show you've done research
-- Connect your experience to their specific challenges
-- Show enthusiasm for their product/mission
-- Be ready to discuss both successes and learning from failures
-
-## Resources Reference
-
-### Scripts
-
-- **all_in_one.py** ⭐ (推荐): One-click workflow for complete interview preparation
-  - Usage: `python scripts/all_in_one.py execute --base-path <path> --company <name> --role <title> --jd-file <file> --resume-version <version> [options]`
-  - Generates: JD analysis, resume matching, interview strategy, icebreaker messages - all in one command
-  - Best for: Starting analysis for a new company/role
-
-- **setup_company_folder.py**: Creates organized folder structure for each company/role
-  - Usage: `python scripts/setup_company_folder.py <base_path> "<Company>" ["<Role>"]`
-  - Outputs: JSON with all file paths
-
-- **extract_jd_keywords.py**: Automated JD keyword and requirement extraction
-  - Usage: `python scripts/extract_jd_keywords.py jd_file.txt`
-  - Outputs: Categorized technical skills, experience, soft skills
-
-- **resume_optimizer.py**: JD deep analysis and resume-JD matching with STAR suggestions
-  - Usage: `python scripts/resume_optimizer.py analyze --company-path <path> --company <name> --role <title> --jd-file <file> --resume-version <version>`
-  - Generates: JD analysis + resume matching report
-
-- **interview_strategy.py**: Multi-round interview attack-defense strategy generator
-  - Usage: `python scripts/interview_strategy.py generate --company-path <path> --company <name> --role <title> --resume-version <version>`
-  - Generates: HR/Business/Executive round strategies
-
-- **icebreaker_generator.py**: Opening message generator for job applications
-  - Usage: `python scripts/icebreaker_generator.py generate --company-path <path> --company <name> --role <title> --keywords <kw1,kw2> --achievement <text>`
-  - Generates: Strategy A (Professional) + Strategy B (Business Insight)
-
-- **resume_manager.py**: Complete resume version management system
-  - Usage: `python scripts/resume_manager.py [create|list|tailor|compare|recommend|report] [options]`
-  - Manages: Master versions, tailored versions, comparisons, recommendations
-
-- **interview_tracker.py**: Structured interview progress tracking
-  - Usage: `python scripts/interview_tracker.py [init|add-round|update|status|timeline] [options]`
-  - Tracks: Applications, rounds, interviewers, feedback, decisions
-
-- **analytics_generator.py**: Statistics and visualization generation
-  - Usage: `python scripts/analytics_generator.py [generate|export|dashboard] [options]`
-  - Produces: Global stats, CSV exports, HTML dashboards
-
-### References (Load as Needed)
-- **company_research_guide.md**: Framework for researching target companies
-- **jd_analysis_framework.md**: Structured approach to analyzing job descriptions
-- **resume_jd_mapping.md**: Methods for aligning resume experience to JD requirements
-
-### Assets (Templates for Output)
-- **company_intel_brief_template.md**: Template for company research output
-- **interview_prep_report_template.md**: Comprehensive interview preparation report template
-- **resume_changelog_template.md**: Template for documenting resume version changes
-- **interview_round_notes_template.md**: Template for detailed interview round notes
-
-Load reference files when you need detailed guidance on specific analysis steps. Use asset templates as the structure for final outputs.
-
-## File Management Best Practices
-
-1. **Always start with folder setup**: Run setup_company_folder.py before creating any files
-2. **Save all outputs to company folders**: Keep materials organized by company name
-3. **Use consistent naming**: Script automatically sanitizes names (e.g., "Google LLC" → "Google_LLC")
-4. **Track multiple roles**: Same company, different roles → separate files with role suffix
-5. **Manage resume versions**: Store master versions globally, tailored versions per company
-6. **Initialize tracking early**: Run interview_tracker.py init when submitting application
-7. **Update tracking regularly**: Keep interview status and feedback current
-8. **Take detailed notes**: Use the round notes template for each interview
-9. **Generate analytics periodically**: Review progress with analytics_generator.py
-10. **Update notes.md**: Keep interview timeline and learnings in the notes file
-11. **Preserve raw data**: Always save original JD and script outputs in raw_data/
+**参考示例**: `companies/MiniMax/` - 使用一键完成方案生成的完整示例

@@ -35,7 +35,7 @@ JD: [粘贴 JD 内容或提供文件路径]
    - 确认关键信息（公司、项目、数据）后才继续
    - 所有生成内容包含事实声明和核查清单
 
-2. **运行脚本生成框架** - 执行 interview-intel/scripts/all_in_one_v1.0.0.py 生成 5 个标准文件
+2. **运行脚本生成框架** - 执行 interview-intel/scripts/all_in_one.py 生成 5 个标准文件
 3. **读取简历提取信息** - 自动从 resumes/ 目录的 PDF 简历提取核心经历
 4. **主动询问缺失信息** - 如需要会询问你（如公司官网、产品熟悉度等）
 5. **网络搜索补充信息** - 获取公司最新信息、竞争对手、行业趋势
@@ -138,13 +138,13 @@ JD: [粘贴 JD 内容]
 ## 相关文档
 
 - **事实验证协议**: .claude/FACT_VERIFICATION_PROTOCOL.md ⚡ NEW
-- **完整文档**: interview-intel/SKILL_V6.md
-- **示例输出**: companies/词元无限/ (v1.0.0 示例)
-- **使用指南**: .claude/commands/README.md
+- **完整文档**: interview-intel/SKILL.md ⚡ UPDATED (中文版 v1.0.0)
+- **示例输出**: companies/贝壳找房/ (程琛面试准备包示例)
+- **技能包**: interview-intel.skill (中文版 v1.0.0)
 
 ## 版本历史
 
-**v1.0.0** (2026-02-08)
+**v1.0.0** (2025-02-08)
 - ✅ 添加严格事实验证协议
 - ✅ 自动触发验证流程（通过 settings.local.json hooks）
 - ✅ 禁止编造用户信息、工作经历、项目成果
