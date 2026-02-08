@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### 🆕 主要功能
 
 #### 1. 一键生成工作流
-- **all_in_one_v6.1.py**: 主工作流脚本
+- **all_in_one.py**: 主工作流脚本
   - 输入：公司名 + 职位 + JD + 简历
   - 输出：5个完整Markdown文件
   - 自动执行：文件创建、简历读取、网络搜索、内容填充

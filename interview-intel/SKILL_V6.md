@@ -70,7 +70,7 @@
   - 自动搜索公司最新信息
   - 主动询问缺失信息
   - 生成 100% 完成的面试准备包
-- ✅ **统一脚本**: `all_in_one_v6.1.py` 集成所有内容生成逻辑
+- ✅ **统一脚本**: `all_in_one_v1.0.0.py` 集成所有内容生成逻辑
 
 **两种使用方式**:
 
@@ -185,11 +185,11 @@ JD: [粘贴 JD 内容]
 
 ### 方式 2: 使用统一脚本生成框架(传统方式)
 
-使用 `all_in_one_v6.1.py` 生成框架后手动补充内容:
+使用 `all_in_one_v1.0.0.py` 生成框架后手动补充内容:
 
 ```bash
 cd /Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel/interview-intel
-python scripts/all_in_one_v6.1.py \
+python scripts/all_in_one_v1.0.0.py \
   --base-path "/Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel" \
   --company "MiniMax" \
   --role "B端大模型产品经理" \
@@ -401,11 +401,11 @@ InterviewIntel/
 - 🔧 支持 PDF 简历自动读取
 - 🔧 优化文件查找逻辑
 
-### v6.1 (2026-01-21)
+### v1.0.0 (2026-01-21)
 
 **重大升级**:
 
-- ✨ **统一脚本**: 创建 `all_in_one_v6.1.py`,集成所有内容生成逻辑
+- ✨ **统一脚本**: 创建 `all_in_one_v1.0.0.py`,集成所有内容生成逻辑
 - ✨ **智能 JD 解析**: 自动提取职责描述和任职要求
 - ✨ **自动生成破冰文案**: 两种策略(专业匹配型 + 业务洞察型)
 - ✨ **智能匹配分析**: 基于工作年限和成就自动生成匹配度框架
@@ -417,7 +417,7 @@ InterviewIntel/
   - AI 智能填充所有 `[待补充]` 内容
   - 生成 100% 完成的面试准备包
 
-### v6.0 (2026-01-21)
+### v1.0.0 (2026-01-21)
 
 **重大升级**:
 

@@ -55,7 +55,7 @@ Python 3.14.1
 
 #### 核心脚本
 ```bash
-$ python3 interview-intel/scripts/all_in_one_v6.1.py --help
+$ python3 interview-intel/scripts/all_in_one_v1.0.0.py --help
 ✅ 脚本可正常执行
 ```
 
@@ -98,7 +98,7 @@ JD: [粘贴 JD 内容]
 ```bash
 cd /Users/leayn/Documents/PythonProject/Hackthon/InterviewIntel
 
-python3 interview-intel/scripts/all_in_one_v6.1.py \
+python3 interview-intel/scripts/all_in_one_v1.0.0.py \
   --base-path . \
   --company "公司名称" \
   --role "职位名称" \
