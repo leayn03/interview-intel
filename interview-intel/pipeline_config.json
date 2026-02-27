@@ -1,0 +1,119 @@
+{
+  "version": "1.0.0",
+  "description": "专业化流水线团队配置",
+  "team_mode": {
+    "enabled": true,
+    "max_workers": 2,
+    "default_mode": "pipeline",
+    "fallback_on_error": "sequential"
+  },
+
+  "teammates": {
+    "company_researcher": {
+      "id": "teammate_a",
+      "name": "Teammate A",
+      "role": "公司研究员",
+      "output_file": "01_company_intel_brief.md",
+      "estimated_time": 45,
+      "dependencies": [],
+      "description": "负责公司背景、业务模式、竞争格局研究"
+    },
+
+    "resume_analyst": {
+      "id": "teammate_b",
+      "name": "Teammate B",
+      "role": "简历分析师",
+      "output_file": "02_resume_jd_matching.md",
+      "estimated_time": 45,
+      "dependencies": [],
+      "description": "负责简历解析、JD拆解、匹配度分析"
+    },
+
+    "interview_coach": {
+      "id": "teammate_c",
+      "name": "Teammate C",
+      "role": "面试教练",
+      "output_file": "03_interview_prep_report.md",
+      "estimated_time": 60,
+      "dependencies": ["01", "02"],
+      "description": "负责面试策略、STAR案例、话术设计"
+    },
+
+    "copywriter": {
+      "id": "teammate_d",
+      "name": "Teammate D",
+      "role": "文案专家",
+      "output_file": "04_icebreaker_messages.md",
+      "estimated_time": 40,
+      "dependencies": ["01", "02"],
+      "description": "负责破冰文案、开场白、反向提问"
+    },
+
+    "strategy_consultant": {
+      "id": "teammate_e",
+      "name": "Teammate E",
+      "role": "战略顾问",
+      "output_file": "05_final_analysis_report.md",
+      "estimated_time": 30,
+      "dependencies": ["01", "02", "03", "04"],
+      "description": "负责综合分析、风险评估、行动计划"
+    }
+  },
+
+  "stages": {
+    "stage_1": {
+      "name": "公司研究 + 简历分析",
+      "teammates": ["teammate_a", "teammate_b"],
+      "parallel": true,
+      "estimated_time": 45
+    },
+
+    "stage_2": {
+      "name": "面试策略 + 破冰文案",
+      "teammates": ["teammate_c", "teammate_d"],
+      "parallel": true,
+      "estimated_time": 60
+    },
+
+    "stage_3": {
+      "name": "最终分析报告",
+      "teammates": ["teammate_e"],
+      "parallel": false,
+      "estimated_time": 30
+    }
+  },
+
+  "performance": {
+    "sequential_time_estimate": 200,
+    "parallel_time_estimate": 135,
+    "target_speedup": 1.5,
+    "max_total_time": 180
+  },
+
+  "output": {
+    "directory_format": "{company}-{role}-{candidate}",
+    "subdirectories": [
+      "raw_data",
+      "resumes",
+      "interviews"
+    ]
+  },
+
+  "quality": {
+    "auto_validate": true,
+    "min_file_sizes": {
+      "01": 3,
+      "02": 5,
+      "03": 8,
+      "04": 5,
+      "05": 6
+    },
+    "required_sections": {
+      "01": ["公司背景", "业务模式", "竞争格局"],
+      "02": ["匹配度总览", "逐项匹配分析", "核心竞争力"],
+      "03": ["HR面试", "业务面试", "高管面试"],
+      "04": ["自我介绍", "开场白", "反向提问"],
+      "05": ["综合评估", "核心竞争力", "行动计划"]
+    }
+  }
+}
